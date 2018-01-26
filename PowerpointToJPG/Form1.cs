@@ -96,10 +96,13 @@ namespace PowerpointToJPG
         {
             string rawname = Path.GetFileNameWithoutExtension(inf.Name);
             string finalname = "";
-            if (rawname.Contains('_')) {
+            if (rawname.Contains('-')) {
+                finalname = rawname.Split('-')[1].Split('_')[0].Trim();
+            } else if (rawname.Contains('_'))
+            {
                 finalname = rawname.Split('_')[1].Split('_')[0].Trim();
-                Console.WriteLine("finalname: " + finalname);
             }
+                Console.WriteLine("finalname: " + finalname);
             return finalname;
         }
         private void processKill()
